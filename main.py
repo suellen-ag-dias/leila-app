@@ -2,6 +2,7 @@ print("=== LEILA APP ===")
 
 # Listas do aplicativo
 tarefas = []
+consultas = []
 lembretes = []
 
 # Dados iniciais
@@ -63,8 +64,53 @@ while True:
 
     # CONSULTAS
     elif opcao == "2":
-        print("\n=== CONSULTAS ===")
-        print("Essa função ainda está em desenvolvimento.")
+        while True:
+            print("\n=== CONSULTAS ===")
+            print("1 - Adicionar consulta")
+            print("2 - Ver consultas")
+            print("0 - Voltar")
+
+            opcao_consulta = input("\nEscolha uma opção: ")
+
+            if opcao_consulta == "1":
+                especialidade = input("Digite a especialidade: ")
+                medico = input("Digite o nome do médico: ")
+                data = input("Digite a data da consulta: ")
+                horario = input("Digite o horário da consulta: ")
+                local = input("Digite o local da consulta: ")
+
+                consulta = {
+                    "especialidade": especialidade,
+                    "medico": medico,
+                    "data": data,
+                    "horario": horario,
+                    "local": local
+                }
+
+                consultas.append(consulta)
+
+                print("Consulta adicionada com sucesso!")
+
+            elif opcao_consulta == "2":
+                print("\n=== SUAS CONSULTAS ===")
+
+                if len(consultas) == 0:
+                    print("Nenhuma consulta cadastrada.")
+
+                else:
+                    for numero, consulta in enumerate(consultas, start=1):
+                        print(f"\nConsulta {numero}")
+                        print(f"Especialidade: {consulta['especialidade']}")
+                        print(f"Médico: {consulta['medico']}")
+                        print(f"Data: {consulta['data']}")
+                        print(f"Horário: {consulta['horario']}")
+                        print(f"Local: {consulta['local']}")
+
+            elif opcao_consulta == "0":
+                break
+
+            else:
+                print("Opção inválida.")
 
 
     # LEMBRETES
